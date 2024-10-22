@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 
 import CharPicker from './components/CharPicker';
 import Character from './components/Character';
+
+export const SharedContext = createContext();
 
 const App = props => {
   const [selectedCharacter, setSelectedCharacter] = useState('1');
@@ -32,7 +34,12 @@ const App = props => {
       <button onClick={sideHandler.bind(null, 'light')}>
         Light Side
       </button>
-      <button onClick={sideHandler.bind(null, 'dark')}>Dark Side</button>
+      <button onClick={sideHandler.bind(null, 'pink')}>
+        Pink Side
+        </button>      
+        <button onClick={sideHandler.bind(null, 'dark')}>
+        Dark Side
+        </button>
       {chosenSide=== 'dark' && (
         <button onClick={destructionHandler}>DESTROY!</button>
       )}
@@ -40,10 +47,19 @@ const App = props => {
   )
 
   if (destroyed) {
-    content = <h1>Total destruction!</h1>;
+    content = 
+    (
+      <>
+        <h1>Total destruction!</h1>
+      </>
+    );
   }
   
-  return <div>{content}</div>;
+  return  <div>
+            <SharedContext.Provider value={{ chosenSide, selectedCharacter }}>
+              {content}
+            </SharedContext.Provider>
+          </div>;
 
 }
 

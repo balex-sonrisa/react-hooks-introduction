@@ -36,14 +36,16 @@ const Character = props => {
 
   if (!isLoading && loadedCharacter) {
     content = (
-      <Summary
-        name={loadedCharacter.name}
-        gender={loadedCharacter.gender}
-        height={loadedCharacter.height}
-        hairColor={loadedCharacter.colors.hair}
-        skinColor={loadedCharacter.colors.skin}
-        movieCount={loadedCharacter.movieCount}
+      <>
+        <Summary
+          name={loadedCharacter.name}
+          gender={loadedCharacter.gender}
+          height={loadedCharacter.height}
+          hairColor={loadedCharacter.colors.hair}
+          skinColor={loadedCharacter.colors.skin}
+          movieCount={loadedCharacter.movieCount}
       />
+      </>
     );
   } else if (!isLoading && !loadedCharacter) {
     content = <p>Failed to fetch character.</p>;

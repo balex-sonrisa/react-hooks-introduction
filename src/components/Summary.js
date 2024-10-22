@@ -1,11 +1,13 @@
 import React from 'react';
 
 import './Summary.css';
+import { ADisplay } from './Custom';
 
 const Summary = props => {
   return (
     <div className="summary">
       <h1>{props.name}</h1>
+      <ADisplay charName={props.name} gender={props.gender} />
       <p>
         Gender: <span className="summary__output">{props.gender}</span>
       </p>
